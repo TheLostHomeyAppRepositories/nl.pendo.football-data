@@ -1,0 +1,34 @@
+{
+  "id": "extra_time_started",
+  "title": {
+    "en": "Extra time started",
+    "nl": "Verlenging begonnen"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "score",
+      "type": "string",
+      "title": { "en": "Score at 90 min", "nl": "Stand na 90 min" },
+      "example": "2-2"
+    },
+    {
+      "name": "opponent",
+      "type": "string",
+      "title": { "en": "Opponent", "nl": "Tegenstander" },
+      "example": "Ajax"
+    },
+    {
+      "name": "competition",
+      "type": "string",
+      "title": { "en": "Competition", "nl": "Competitie" },
+      "example": "Champions League"
+    }
+  ]
+}

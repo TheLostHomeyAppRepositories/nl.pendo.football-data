@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "apiKey": "API Sleutel",
+    "apiKeyHint": "Voer je football-data.org API sleutel in"
+  },
+  "drivers": {
+    "team": {
+      "name": "Voetbalteam",
+      "pair": {
+        "search": "Zoek een team..."
+      }
+    }
+  },
+  "capabilities": {
+    "match_status": {
+      "title": "Wedstrijd Status"
+    },
+    "score": {
+      "title": "Stand"
+    },
+    "next_match": {
+      "title": "Volgende Wedstrijd"
+    }
+  }
+}

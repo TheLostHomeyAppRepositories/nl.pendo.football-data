@@ -1,0 +1,46 @@
+{
+  "id": "team_conceded",
+  "title": {
+    "en": "Team conceded",
+    "nl": "Team krijgt goal tegen"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "score",
+      "type": "string",
+      "title": { "en": "Score", "nl": "Stand" },
+      "example": "1-2"
+    },
+    {
+      "name": "minute",
+      "type": "number",
+      "title": { "en": "Minute", "nl": "Minuut" },
+      "example": 55
+    },
+    {
+      "name": "scoring_team",
+      "type": "string",
+      "title": { "en": "Scoring team", "nl": "Scorend team" },
+      "example": "Feyenoord"
+    },
+    {
+      "name": "home_score",
+      "type": "number",
+      "title": { "en": "Home score", "nl": "Thuis score" },
+      "example": 1
+    },
+    {
+      "name": "away_score",
+      "type": "number",
+      "title": { "en": "Away score", "nl": "Uit score" },
+      "example": 2
+    }
+  ]
+}

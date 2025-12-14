@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Score",
+    "nl": "Stand"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor"
+}

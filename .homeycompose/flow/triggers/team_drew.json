@@ -1,0 +1,40 @@
+{
+  "id": "team_drew",
+  "title": {
+    "en": "Team drew",
+    "nl": "Team gelijkgespeeld"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "final_score",
+      "type": "string",
+      "title": { "en": "Final score", "nl": "Eindstand" },
+      "example": "2-2"
+    },
+    {
+      "name": "opponent",
+      "type": "string",
+      "title": { "en": "Opponent", "nl": "Tegenstander" },
+      "example": "Ajax"
+    },
+    {
+      "name": "competition",
+      "type": "string",
+      "title": { "en": "Competition", "nl": "Competitie" },
+      "example": "Eredivisie"
+    },
+    {
+      "name": "goals",
+      "type": "number",
+      "title": { "en": "Goals", "nl": "Doelpunten" },
+      "example": 2
+    }
+  ]
+}

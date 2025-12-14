@@ -1,0 +1,520 @@
+{
+  "name": {
+    "en": "Football Team",
+    "nl": "Voetbalteam"
+  },
+  "class": "other",
+  "capabilities": [
+    "match_status",
+    "score",
+    "next_match"
+  ],
+  "pair": [
+    {
+      "id": "select_competition"
+    },
+    {
+      "id": "select_team"
+    }
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png"
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "team_scored",
+        "title": {
+          "en": "Team scored",
+          "nl": "Team scoort"
+        },
+        "tokens": [
+          {
+            "name": "score",
+            "type": "string",
+            "title": {
+              "en": "Score",
+              "nl": "Stand"
+            },
+            "example": "2-1"
+          },
+          {
+            "name": "minute",
+            "type": "number",
+            "title": {
+              "en": "Minute",
+              "nl": "Minuut"
+            },
+            "example": 67
+          },
+          {
+            "name": "opponent",
+            "type": "string",
+            "title": {
+              "en": "Opponent",
+              "nl": "Tegenstander"
+            },
+            "example": "Ajax"
+          },
+          {
+            "name": "home_score",
+            "type": "number",
+            "title": {
+              "en": "Home score",
+              "nl": "Thuis score"
+            },
+            "example": 2
+          },
+          {
+            "name": "away_score",
+            "type": "number",
+            "title": {
+              "en": "Away score",
+              "nl": "Uit score"
+            },
+            "example": 1
+          }
+        ]
+      },
+      {
+        "id": "team_conceded",
+        "title": {
+          "en": "Team conceded",
+          "nl": "Team krijgt goal tegen"
+        },
+        "tokens": [
+          {
+            "name": "score",
+            "type": "string",
+            "title": {
+              "en": "Score",
+              "nl": "Stand"
+            },
+            "example": "1-2"
+          },
+          {
+            "name": "minute",
+            "type": "number",
+            "title": {
+              "en": "Minute",
+              "nl": "Minuut"
+            },
+            "example": 55
+          },
+          {
+            "name": "scoring_team",
+            "type": "string",
+            "title": {
+              "en": "Scoring team",
+              "nl": "Scorend team"
+            },
+            "example": "Feyenoord"
+          },
+          {
+            "name": "home_score",
+            "type": "number",
+            "title": {
+              "en": "Home score",
+              "nl": "Thuis score"
+            },
+            "example": 1
+          },
+          {
+            "name": "away_score",
+            "type": "number",
+            "title": {
+              "en": "Away score",
+              "nl": "Uit score"
+            },
+            "example": 2
+          }
+        ]
+      },
+      {
+        "id": "match_kickoff",
+        "title": {
+          "en": "Match kicked off",
+          "nl": "Wedstrijd begonnen"
+        },
+        "tokens": [
+          {
+            "name": "opponent",
+            "type": "string",
+            "title": {
+              "en": "Opponent",
+              "nl": "Tegenstander"
+            },
+            "example": "PSV"
+          },
+          {
+            "name": "competition",
+            "type": "string",
+            "title": {
+              "en": "Competition",
+              "nl": "Competitie"
+            },
+            "example": "Eredivisie"
+          },
+          {
+            "name": "is_home",
+            "type": "boolean",
+            "title": {
+              "en": "Home match",
+              "nl": "Thuiswedstrijd"
+            }
+          }
+        ]
+      },
+      {
+        "id": "halftime_started",
+        "title": {
+          "en": "Halftime started",
+          "nl": "Rust begonnen"
+        },
+        "tokens": [
+          {
+            "name": "halftime_score",
+            "type": "string",
+            "title": {
+              "en": "Halftime score",
+              "nl": "Ruststand"
+            },
+            "example": "1-0"
+          },
+          {
+            "name": "opponent",
+            "type": "string",
+            "title": {
+              "en": "Opponent",
+              "nl": "Tegenstander"
+            },
+            "example": "Ajax"
+          },
+          {
+            "name": "home_score",
+            "type": "number",
+            "title": {
+              "en": "Home score",
+              "nl": "Thuis score"
+            },
+            "example": 1
+          },
+          {
+            "name": "away_score",
+            "type": "number",
+            "title": {
+              "en": "Away score",
+              "nl": "Uit score"
+            },
+            "example": 0
+          }
+        ]
+      },
+      {
+        "id": "second_half_started",
+        "title": {
+          "en": "Second half started",
+          "nl": "Tweede helft begonnen"
+        },
+        "tokens": [
+          {
+            "name": "score",
+            "type": "string",
+            "title": {
+              "en": "Score",
+              "nl": "Stand"
+            },
+            "example": "1-1"
+          },
+          {
+            "name": "opponent",
+            "type": "string",
+            "title": {
+              "en": "Opponent",
+              "nl": "Tegenstander"
+            },
+            "example": "Feyenoord"
+          }
+        ]
+      },
+      {
+        "id": "extra_time_started",
+        "title": {
+          "en": "Extra time started",
+          "nl": "Verlenging begonnen"
+        },
+        "tokens": [
+          {
+            "name": "score",
+            "type": "string",
+            "title": {
+              "en": "Score at 90 min",
+              "nl": "Stand na 90 min"
+            },
+            "example": "2-2"
+          },
+          {
+            "name": "opponent",
+            "type": "string",
+            "title": {
+              "en": "Opponent",
+              "nl": "Tegenstander"
+            },
+            "example": "Barcelona"
+          },
+          {
+            "name": "competition",
+            "type": "string",
+            "title": {
+              "en": "Competition",
+              "nl": "Competitie"
+            },
+            "example": "Champions League"
+          }
+        ]
+      },
+      {
+        "id": "team_won",
+        "title": {
+          "en": "Team won",
+          "nl": "Team heeft gewonnen"
+        },
+        "tokens": [
+          {
+            "name": "final_score",
+            "type": "string",
+            "title": {
+              "en": "Final score",
+              "nl": "Eindstand"
+            },
+            "example": "3-1"
+          },
+          {
+            "name": "opponent",
+            "type": "string",
+            "title": {
+              "en": "Opponent",
+              "nl": "Tegenstander"
+            },
+            "example": "Vitesse"
+          },
+          {
+            "name": "competition",
+            "type": "string",
+            "title": {
+              "en": "Competition",
+              "nl": "Competitie"
+            },
+            "example": "Eredivisie"
+          },
+          {
+            "name": "team_goals",
+            "type": "number",
+            "title": {
+              "en": "Team goals",
+              "nl": "Goals team"
+            },
+            "example": 3
+          },
+          {
+            "name": "opponent_goals",
+            "type": "number",
+            "title": {
+              "en": "Opponent goals",
+              "nl": "Goals tegenstander"
+            },
+            "example": 1
+          }
+        ]
+      },
+      {
+        "id": "team_lost",
+        "title": {
+          "en": "Team lost",
+          "nl": "Team heeft verloren"
+        },
+        "tokens": [
+          {
+            "name": "final_score",
+            "type": "string",
+            "title": {
+              "en": "Final score",
+              "nl": "Eindstand"
+            },
+            "example": "1-2"
+          },
+          {
+            "name": "opponent",
+            "type": "string",
+            "title": {
+              "en": "Opponent",
+              "nl": "Tegenstander"
+            },
+            "example": "AZ"
+          },
+          {
+            "name": "competition",
+            "type": "string",
+            "title": {
+              "en": "Competition",
+              "nl": "Competitie"
+            },
+            "example": "Eredivisie"
+          },
+          {
+            "name": "team_goals",
+            "type": "number",
+            "title": {
+              "en": "Team goals",
+              "nl": "Goals team"
+            },
+            "example": 1
+          },
+          {
+            "name": "opponent_goals",
+            "type": "number",
+            "title": {
+              "en": "Opponent goals",
+              "nl": "Goals tegenstander"
+            },
+            "example": 2
+          }
+        ]
+      },
+      {
+        "id": "team_drew",
+        "title": {
+          "en": "Team drew",
+          "nl": "Team heeft gelijkgespeeld"
+        },
+        "tokens": [
+          {
+            "name": "final_score",
+            "type": "string",
+            "title": {
+              "en": "Final score",
+              "nl": "Eindstand"
+            },
+            "example": "2-2"
+          },
+          {
+            "name": "opponent",
+            "type": "string",
+            "title": {
+              "en": "Opponent",
+              "nl": "Tegenstander"
+            },
+            "example": "Utrecht"
+          },
+          {
+            "name": "competition",
+            "type": "string",
+            "title": {
+              "en": "Competition",
+              "nl": "Competitie"
+            },
+            "example": "Eredivisie"
+          },
+          {
+            "name": "goals",
+            "type": "number",
+            "title": {
+              "en": "Goals",
+              "nl": "Goals"
+            },
+            "example": 2
+          }
+        ]
+      },
+      {
+        "id": "match_starts_soon",
+        "title": {
+          "en": "Match starts soon",
+          "nl": "Wedstrijd begint binnenkort"
+        },
+        "titleFormatted": {
+          "en": "Match starts in [[minutes]] minutes",
+          "nl": "Wedstrijd begint over [[minutes]] minuten"
+        },
+        "args": [
+          {
+            "name": "minutes",
+            "type": "dropdown",
+            "title": {
+              "en": "Minutes before",
+              "nl": "Minuten voor"
+            },
+            "values": [
+              {
+                "id": "15",
+                "label": {
+                  "en": "15 minutes",
+                  "nl": "15 minuten"
+                }
+              },
+              {
+                "id": "30",
+                "label": {
+                  "en": "30 minutes",
+                  "nl": "30 minuten"
+                }
+              },
+              {
+                "id": "60",
+                "label": {
+                  "en": "1 hour",
+                  "nl": "1 uur"
+                }
+              },
+              {
+                "id": "120",
+                "label": {
+                  "en": "2 hours",
+                  "nl": "2 uur"
+                }
+              }
+            ]
+          }
+        ],
+        "tokens": [
+          {
+            "name": "opponent",
+            "type": "string",
+            "title": {
+              "en": "Opponent",
+              "nl": "Tegenstander"
+            },
+            "example": "Ajax"
+          },
+          {
+            "name": "kickoff_time",
+            "type": "string",
+            "title": {
+              "en": "Kickoff time",
+              "nl": "Aftrap tijd"
+            },
+            "example": "20:00"
+          },
+          {
+            "name": "competition",
+            "type": "string",
+            "title": {
+              "en": "Competition",
+              "nl": "Competitie"
+            },
+            "example": "Eredivisie"
+          },
+          {
+            "name": "is_home",
+            "type": "boolean",
+            "title": {
+              "en": "Home match",
+              "nl": "Thuiswedstrijd"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

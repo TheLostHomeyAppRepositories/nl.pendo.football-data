@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Next Match",
+    "nl": "Volgende Wedstrijd"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "match_kickoff",
+  "title": {
+    "en": "Match kicked off",
+    "nl": "Wedstrijd begonnen"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "opponent",
+      "type": "string",
+      "title": { "en": "Opponent", "nl": "Tegenstander" },
+      "example": "Ajax"
+    },
+    {
+      "name": "competition",
+      "type": "string",
+      "title": { "en": "Competition", "nl": "Competitie" },
+      "example": "Eredivisie"
+    },
+    {
+      "name": "is_home",
+      "type": "boolean",
+      "title": { "en": "Home match", "nl": "Thuiswedstrijd" }
+    }
+  ]
+}

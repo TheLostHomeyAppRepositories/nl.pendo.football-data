@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Team</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 20px;
+      margin: 0;
+      background: #f5f5f5;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .teams {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .team-item {
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .team-item:last-child {
+      border-bottom: none;
+    }
+    .team-item:hover {
+      background: #f9f9f9;
+    }
+    .team-crest {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: 4px;
+      background: #f0f0f0;
+    }
+    .team-info {
+      flex: 1;
+    }
+    .team-name {
+      font-weight: 500;
+      color: #333;
+    }
+    .team-tla {
+      font-size: 13px;
+      color: #666;
+    }
+    .error {
+      color: #c62828;
+      background: #ffebee;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 15px;
+      color: #4CAF50;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ddd;
+      border-top-color: #4CAF50;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="#" id="backLink" class="back-link">&larr; Back to competitions</a>
+    <h1>Select your team</h1>
+    <p id="subtitle" class="subtitle">
+      <span class="spinner" id="spinner"></span>
+      <span id="subtitleText">Loading teams...</span>
+    </p>
+
+    <div id="error" class="error" style="display: none;"></div>
+    <div id="teams" class="teams" style="display: none;"></div>
+  </div>
+
+  <script>
+    console.log('[Pair] select_team.html loaded');
+
+    function onHomeyReady(Homey) {
+      console.log('[Pair] onHomeyReady called');
+      Homey.ready();
+
+      const teamsEl = document.getElementById('teams');
+      const spinnerEl = document.getElementById('spinner');
+      const subtitleText = document.getElementById('subtitleText');
+      const errorEl = document.getElementById('error');
+      const backLink = document.getElementById('backLink');
+
+      backLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        Homey.showView('select_competition');
+      });
+
+      loadTeams();
+
+      async function loadTeams() {
+        try {
+          const teams = await Homey.emit('get_teams');
+          spinnerEl.style.display = 'none';
+
+          if (!teams || teams.length === 0) {
+            subtitleText.textContent = 'No teams found';
+            errorEl.textContent = 'No teams found for this competition';
+            errorEl.style.display = 'block';
+            return;
+          }
+
+          // Sort A-Z by name
+          teams.sort((a, b) => a.name.localeCompare(b.name));
+
+          subtitleText.textContent = `${teams.length} teams available`;
+          teamsEl.style.display = 'block';
+          renderTeams(teams);
+        } catch (error) {
+          spinnerEl.style.display = 'none';
+          subtitleText.textContent = 'Failed to load';
+          errorEl.textContent = error.message || 'Failed to load teams';
+          errorEl.style.display = 'block';
+        }
+      }
+
+      function renderTeams(teams) {
+        teamsEl.innerHTML = '';
+
+        teams.forEach(team => {
+          const item = document.createElement('div');
+          item.className = 'team-item';
+          item.innerHTML = `
+            <img class="team-crest" src="${team.crest || ''}" onerror="this.style.display='none'">
+            <div class="team-info">
+              <div class="team-name">${team.name}</div>
+              <div class="team-tla">${team.tla || ''}</div>
+            </div>
+          `;
+          item.addEventListener('click', () => selectTeam(team));
+          teamsEl.appendChild(item);
+        });
+      }
+
+      async function selectTeam(team) {
+        try {
+          await Homey.createDevice({
+            name: team.name,
+            data: {
+              id: String(team.id),
+            },
+            store: {
+              teamName: team.name,
+              teamShortName: team.shortName || team.name,
+              teamTla: team.tla || '',
+              competition: team.competition || '',
+              competitionCode: team.competitionCode || '',
+              crest: team.crest || '',
+            },
+          });
+          await Homey.done();
+        } catch (error) {
+          errorEl.textContent = error.message || 'Failed to add device';
+          errorEl.style.display = 'block';
+        }
+      }
+    }
+
+    if (typeof window.Homey !== 'undefined') {
+      onHomeyReady(window.Homey);
+    }
+  </script>
+</body>
+</html>

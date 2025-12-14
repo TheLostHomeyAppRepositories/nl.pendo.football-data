@@ -1,0 +1,57 @@
+{
+  "id": "match_starts_soon",
+  "title": {
+    "en": "Match starts soon",
+    "nl": "Wedstrijd begint binnenkort"
+  },
+  "titleFormatted": {
+    "en": "Match starts within [[minutes]]",
+    "nl": "Wedstrijd begint binnen [[minutes]]"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    },
+    {
+      "name": "minutes",
+      "type": "dropdown",
+      "title": {
+        "en": "Minutes before",
+        "nl": "Minuten voor"
+      },
+      "values": [
+        { "id": "15", "label": { "en": "15 minutes", "nl": "15 minuten" } },
+        { "id": "30", "label": { "en": "30 minutes", "nl": "30 minuten" } },
+        { "id": "60", "label": { "en": "1 hour", "nl": "1 uur" } },
+        { "id": "120", "label": { "en": "2 hours", "nl": "2 uur" } }
+      ]
+    }
+  ],
+  "tokens": [
+    {
+      "name": "opponent",
+      "type": "string",
+      "title": { "en": "Opponent", "nl": "Tegenstander" },
+      "example": "Ajax"
+    },
+    {
+      "name": "kickoff_time",
+      "type": "string",
+      "title": { "en": "Kickoff time", "nl": "Aftrap tijd" },
+      "example": "20:00"
+    },
+    {
+      "name": "competition",
+      "type": "string",
+      "title": { "en": "Competition", "nl": "Competitie" },
+      "example": "Eredivisie"
+    },
+    {
+      "name": "is_home",
+      "type": "boolean",
+      "title": { "en": "Home match", "nl": "Thuiswedstrijd" }
+    }
+  ]
+}

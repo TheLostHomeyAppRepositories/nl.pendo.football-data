@@ -1,0 +1,40 @@
+{
+  "id": "halftime_started",
+  "title": {
+    "en": "Halftime started",
+    "nl": "Rust begonnen"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "halftime_score",
+      "type": "string",
+      "title": { "en": "Halftime score", "nl": "Ruststand" },
+      "example": "1-0"
+    },
+    {
+      "name": "opponent",
+      "type": "string",
+      "title": { "en": "Opponent", "nl": "Tegenstander" },
+      "example": "Ajax"
+    },
+    {
+      "name": "home_score",
+      "type": "number",
+      "title": { "en": "Home score", "nl": "Thuis score" },
+      "example": 1
+    },
+    {
+      "name": "away_score",
+      "type": "number",
+      "title": { "en": "Away score", "nl": "Uit score" },
+      "example": 0
+    }
+  ]
+}

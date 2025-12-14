@@ -1,0 +1,28 @@
+{
+  "title": {
+    "en": "Next match !{{is|is not}} within ... hours",
+    "nl": "Volgende wedstrijd !{{is|is niet}} binnen ... uur"
+  },
+  "titleFormatted": {
+    "en": "Next match !{{is|is not}} within [[hours]] hours",
+    "nl": "Volgende wedstrijd !{{is|is niet}} binnen [[hours]] uur"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    },
+    {
+      "name": "hours",
+      "type": "number",
+      "title": {
+        "en": "Hours",
+        "nl": "Uren"
+      },
+      "min": 1,
+      "max": 72,
+      "step": 1
+    }
+  ]
+}

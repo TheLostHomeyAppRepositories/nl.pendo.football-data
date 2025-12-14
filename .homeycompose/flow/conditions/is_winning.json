@@ -1,0 +1,13 @@
+{
+  "title": {
+    "en": "Team !{{is|is not}} winning",
+    "nl": "Team !{{staat voor|staat niet voor}}"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "team_won",
+  "title": {
+    "en": "Team won",
+    "nl": "Team gewonnen"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "final_score",
+      "type": "string",
+      "title": { "en": "Final score", "nl": "Eindstand" },
+      "example": "3-1"
+    },
+    {
+      "name": "opponent",
+      "type": "string",
+      "title": { "en": "Opponent", "nl": "Tegenstander" },
+      "example": "Ajax"
+    },
+    {
+      "name": "competition",
+      "type": "string",
+      "title": { "en": "Competition", "nl": "Competitie" },
+      "example": "Eredivisie"
+    },
+    {
+      "name": "team_goals",
+      "type": "number",
+      "title": { "en": "Team goals", "nl": "Doelpunten team" },
+      "example": 3
+    },
+    {
+      "name": "opponent_goals",
+      "type": "number",
+      "title": { "en": "Opponent goals", "nl": "Doelpunten tegenstander" },
+      "example": 1
+    }
+  ]
+}

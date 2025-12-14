@@ -1,0 +1,41 @@
+{
+  "id": "nl.pendo.football-data",
+  "version": "1.0.0",
+  "compatibility": ">=12.4.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Football Data",
+    "nl": "Voetbal Data"
+  },
+  "description": {
+    "en": "Automate your home based on football match events. Track your favorite teams and trigger flows when matches start, goals are scored, or results come in.",
+    "nl": "Automatiseer je huis op basis van voetbalwedstrijden. Volg je favoriete teams en trigger flows wanneer wedstrijden beginnen, er gescoord wordt, of de uitslag bekend is."
+  },
+  "category": [
+    "internet"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Joshua de Gier",
+    "email": "info@pendo.nl"
+  },
+  "api": {
+    "getTest": {
+      "method": "GET",
+      "path": "/test"
+    },
+    "getSearch": {
+      "method": "GET",
+      "path": "/search"
+    }
+  },
+  "brandColor": "#1A1819"
+}

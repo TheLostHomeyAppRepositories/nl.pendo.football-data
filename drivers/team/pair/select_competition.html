@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Competition</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 20px;
+      margin: 0;
+      background: #f5f5f5;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .subtitle {
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .competitions {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      max-height: 450px;
+      overflow-y: auto;
+    }
+    .competition-item {
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .competition-item:last-child {
+      border-bottom: none;
+    }
+    .competition-item:hover {
+      background: #f9f9f9;
+    }
+    .competition-emblem {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+    .competition-info {
+      flex: 1;
+    }
+    .competition-name {
+      font-weight: 500;
+      color: #333;
+    }
+    .competition-country {
+      font-size: 13px;
+      color: #666;
+    }
+    .error {
+      color: #c62828;
+      background: #ffebee;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #ddd;
+      border-top-color: #4CAF50;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Select a competition</h1>
+    <p id="subtitle" class="subtitle">
+      <span class="spinner" id="spinner"></span>
+      <span id="subtitleText">Loading competitions...</span>
+    </p>
+
+    <div id="error" class="error" style="display: none;"></div>
+    <div id="competitions" class="competitions" style="display: none;"></div>
+  </div>
+
+  <script>
+    console.log('[Pair] Script loaded');
+
+    function onHomeyReady(Homey) {
+      console.log('[Pair] onHomeyReady called!');
+      Homey.ready();
+
+      const container = document.getElementById('competitions');
+      const spinnerEl = document.getElementById('spinner');
+      const subtitleText = document.getElementById('subtitleText');
+      const errorEl = document.getElementById('error');
+
+      loadCompetitions();
+
+      async function loadCompetitions() {
+        try {
+          const competitions = await Homey.emit('get_competitions');
+          spinnerEl.style.display = 'none';
+
+          if (!competitions || competitions.length === 0) {
+            subtitleText.textContent = 'No competitions available';
+            errorEl.textContent = 'No competitions available';
+            errorEl.style.display = 'block';
+            return;
+          }
+
+          // Sort A-Z by name
+          competitions.sort((a, b) => a.name.localeCompare(b.name));
+
+          subtitleText.textContent = 'Choose the league your team plays in';
+          container.style.display = 'block';
+          renderCompetitions(competitions);
+        } catch (error) {
+          spinnerEl.style.display = 'none';
+          subtitleText.textContent = 'Failed to load';
+          errorEl.textContent = error.message || 'Failed to load competitions';
+          errorEl.style.display = 'block';
+        }
+      }
+
+      function renderCompetitions(competitions) {
+        container.innerHTML = '';
+
+        competitions.forEach(comp => {
+          const item = document.createElement('div');
+          item.className = 'competition-item';
+          item.innerHTML = `
+            <img class="competition-emblem" src="${comp.emblem || ''}" onerror="this.style.display='none'">
+            <div class="competition-info">
+              <div class="competition-name">${comp.name}</div>
+              <div class="competition-country">${comp.area || ''}</div>
+            </div>
+          `;
+          item.addEventListener('click', () => selectCompetition(comp));
+          container.appendChild(item);
+        });
+      }
+
+      async function selectCompetition(competition) {
+        try {
+          await Homey.emit('select_competition', competition);
+        } catch (error) {
+          errorEl.textContent = error.message || 'Selection failed';
+          errorEl.style.display = 'block';
+        }
+      }
+    }
+
+    if (typeof window.Homey !== 'undefined') {
+      onHomeyReady(window.Homey);
+    }
+  </script>
+</body>
+</html>

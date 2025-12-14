@@ -1,0 +1,28 @@
+{
+  "id": "second_half_started",
+  "title": {
+    "en": "Second half started",
+    "nl": "Tweede helft begonnen"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "score",
+      "type": "string",
+      "title": { "en": "Score", "nl": "Stand" },
+      "example": "1-1"
+    },
+    {
+      "name": "opponent",
+      "type": "string",
+      "title": { "en": "Opponent", "nl": "Tegenstander" },
+      "example": "Ajax"
+    }
+  ]
+}

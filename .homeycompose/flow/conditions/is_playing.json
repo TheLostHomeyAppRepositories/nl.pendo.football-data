@@ -1,0 +1,13 @@
+{
+  "title": {
+    "en": "Team !{{is|is not}} playing",
+    "nl": "Team !{{speelt|speelt niet}}"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    }
+  ]
+}

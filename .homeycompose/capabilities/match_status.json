@@ -1,0 +1,47 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Match Status",
+    "nl": "Wedstrijd Status"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "values": [
+    {
+      "id": "idle",
+      "title": {
+        "en": "No match",
+        "nl": "Geen wedstrijd"
+      }
+    },
+    {
+      "id": "scheduled",
+      "title": {
+        "en": "Scheduled",
+        "nl": "Gepland"
+      }
+    },
+    {
+      "id": "live",
+      "title": {
+        "en": "Live",
+        "nl": "Live"
+      }
+    },
+    {
+      "id": "halftime",
+      "title": {
+        "en": "Halftime",
+        "nl": "Rust"
+      }
+    },
+    {
+      "id": "finished",
+      "title": {
+        "en": "Finished",
+        "nl": "Afgelopen"
+      }
+    }
+  ]
+}

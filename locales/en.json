@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "apiKey": "API Key",
+    "apiKeyHint": "Enter your football-data.org API key"
+  },
+  "drivers": {
+    "team": {
+      "name": "Football Team",
+      "pair": {
+        "search": "Search for a team..."
+      }
+    }
+  },
+  "capabilities": {
+    "match_status": {
+      "title": "Match Status"
+    },
+    "score": {
+      "title": "Score"
+    },
+    "next_match": {
+      "title": "Next Match"
+    }
+  }
+}

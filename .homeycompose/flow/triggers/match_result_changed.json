@@ -1,0 +1,52 @@
+{
+  "id": "match_result_changed",
+  "title": {
+    "en": "Match result changed",
+    "nl": "Wedstrijdstand veranderd"
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "state",
+      "type": "string",
+      "title": { "en": "State", "nl": "Status" },
+      "example": "winning"
+    },
+    {
+      "name": "score",
+      "type": "string",
+      "title": { "en": "Score", "nl": "Stand" },
+      "example": "2-1"
+    },
+    {
+      "name": "opponent",
+      "type": "string",
+      "title": { "en": "Opponent", "nl": "Tegenstander" },
+      "example": "Ajax"
+    },
+    {
+      "name": "minute",
+      "type": "number",
+      "title": { "en": "Minute", "nl": "Minuut" },
+      "example": 45
+    },
+    {
+      "name": "team_goals",
+      "type": "number",
+      "title": { "en": "Team goals", "nl": "Doelpunten team" },
+      "example": 2
+    },
+    {
+      "name": "opponent_goals",
+      "type": "number",
+      "title": { "en": "Opponent goals", "nl": "Doelpunten tegenstander" },
+      "example": 1
+    }
+  ]
+}
