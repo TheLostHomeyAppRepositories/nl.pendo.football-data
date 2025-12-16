@@ -1,1 +1,3 @@
-Allows automation based of football teams schedule and match live events.
+Track your favorite football teams and automate your home around match events. Add your team as a device, and Homey will keep you updated with live scores, match status, and upcoming fixtures. You'll need a free API key from football-data.org to get started.
+
+Build flows that react to the game. Trigger your lights when your team scores, get a notification before kickoff, or dim the room when halftime starts. The app supports all the key moments: goals, kickoff, halftime, full-time results, and even extra time. Works with teams from major European leagues including the Premier League, Bundesliga, La Liga, Serie A, Eredivisie, and European competitions.
