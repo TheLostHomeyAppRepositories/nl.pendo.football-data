@@ -1,0 +1,61 @@
+{
+  "id": "get_next_match",
+  "title": {
+    "en": "Get next match",
+    "nl": "Haal volgende wedstrijd op"
+  },
+  "hint": {
+    "en": "Retrieve the next scheduled match. Returns match details as tokens.",
+    "nl": "Haalt de volgende geplande wedstrijd op. Geeft wedstrijdgegevens als tokens."
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "opponent",
+      "type": "string",
+      "title": { "en": "Opponent", "nl": "Tegenstander" },
+      "example": "Ajax"
+    },
+    {
+      "name": "date",
+      "type": "string",
+      "title": { "en": "Date", "nl": "Datum" },
+      "example": "2025-12-21"
+    },
+    {
+      "name": "time",
+      "type": "string",
+      "title": { "en": "Kickoff time", "nl": "Aftrap tijd" },
+      "example": "20:00"
+    },
+    {
+      "name": "competition",
+      "type": "string",
+      "title": { "en": "Competition", "nl": "Competitie" },
+      "example": "Premier League"
+    },
+    {
+      "name": "venue",
+      "type": "string",
+      "title": { "en": "Venue", "nl": "Locatie" },
+      "example": "Home"
+    },
+    {
+      "name": "is_home",
+      "type": "boolean",
+      "title": { "en": "Is home match", "nl": "Is thuiswedstrijd" }
+    },
+    {
+      "name": "days_until",
+      "type": "number",
+      "title": { "en": "Days until match", "nl": "Dagen tot wedstrijd" },
+      "example": 3
+    }
+  ]
+}

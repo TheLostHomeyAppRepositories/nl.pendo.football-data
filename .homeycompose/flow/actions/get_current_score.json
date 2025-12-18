@@ -1,0 +1,67 @@
+{
+  "id": "get_current_score",
+  "title": {
+    "en": "Get current score",
+    "nl": "Haal huidige stand op"
+  },
+  "hint": {
+    "en": "Get the current score of an ongoing match. Returns empty values if no match is live.",
+    "nl": "Haal de huidige stand van een lopende wedstrijd op. Geeft lege waarden als er geen wedstrijd is."
+  },
+  "args": [
+    {
+      "type": "device",
+      "name": "device",
+      "filter": "driver_id=team"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "home_team",
+      "type": "string",
+      "title": { "en": "Home team", "nl": "Thuisteam" },
+      "example": "PSV"
+    },
+    {
+      "name": "away_team",
+      "type": "string",
+      "title": { "en": "Away team", "nl": "Uitteam" },
+      "example": "Ajax"
+    },
+    {
+      "name": "home_score",
+      "type": "number",
+      "title": { "en": "Home score", "nl": "Thuisscore" },
+      "example": 2
+    },
+    {
+      "name": "away_score",
+      "type": "number",
+      "title": { "en": "Away score", "nl": "Uitscore" },
+      "example": 1
+    },
+    {
+      "name": "score",
+      "type": "string",
+      "title": { "en": "Score", "nl": "Stand" },
+      "example": "2-1"
+    },
+    {
+      "name": "minute",
+      "type": "number",
+      "title": { "en": "Current minute", "nl": "Huidige minuut" },
+      "example": 65
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "title": { "en": "Match status", "nl": "Wedstrijd status" },
+      "example": "IN_PLAY"
+    },
+    {
+      "name": "is_live",
+      "type": "boolean",
+      "title": { "en": "Match is live", "nl": "Wedstrijd is live" }
+    }
+  ]
+}

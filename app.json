@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "nl.pendo.football-data",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "compatibility": ">=12.4.0",
   "sdk": 3,
   "platforms": [
@@ -779,6 +779,181 @@
         ],
         "id": "match_within_hours"
       }
+    ],
+    "actions": [
+      {
+        "id": "get_current_score",
+        "title": {
+          "en": "Get current score",
+          "nl": "Haal huidige stand op"
+        },
+        "hint": {
+          "en": "Get the current score of an ongoing match. Returns empty values if no match is live.",
+          "nl": "Haal de huidige stand van een lopende wedstrijd op. Geeft lege waarden als er geen wedstrijd is."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=team"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "home_team",
+            "type": "string",
+            "title": {
+              "en": "Home team",
+              "nl": "Thuisteam"
+            },
+            "example": "PSV"
+          },
+          {
+            "name": "away_team",
+            "type": "string",
+            "title": {
+              "en": "Away team",
+              "nl": "Uitteam"
+            },
+            "example": "Ajax"
+          },
+          {
+            "name": "home_score",
+            "type": "number",
+            "title": {
+              "en": "Home score",
+              "nl": "Thuisscore"
+            },
+            "example": 2
+          },
+          {
+            "name": "away_score",
+            "type": "number",
+            "title": {
+              "en": "Away score",
+              "nl": "Uitscore"
+            },
+            "example": 1
+          },
+          {
+            "name": "score",
+            "type": "string",
+            "title": {
+              "en": "Score",
+              "nl": "Stand"
+            },
+            "example": "2-1"
+          },
+          {
+            "name": "minute",
+            "type": "number",
+            "title": {
+              "en": "Current minute",
+              "nl": "Huidige minuut"
+            },
+            "example": 65
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "title": {
+              "en": "Match status",
+              "nl": "Wedstrijd status"
+            },
+            "example": "IN_PLAY"
+          },
+          {
+            "name": "is_live",
+            "type": "boolean",
+            "title": {
+              "en": "Match is live",
+              "nl": "Wedstrijd is live"
+            }
+          }
+        ]
+      },
+      {
+        "id": "get_next_match",
+        "title": {
+          "en": "Get next match",
+          "nl": "Haal volgende wedstrijd op"
+        },
+        "hint": {
+          "en": "Retrieve the next scheduled match. Returns match details as tokens.",
+          "nl": "Haalt de volgende geplande wedstrijd op. Geeft wedstrijdgegevens als tokens."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=team"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "opponent",
+            "type": "string",
+            "title": {
+              "en": "Opponent",
+              "nl": "Tegenstander"
+            },
+            "example": "Ajax"
+          },
+          {
+            "name": "date",
+            "type": "string",
+            "title": {
+              "en": "Date",
+              "nl": "Datum"
+            },
+            "example": "2025-12-21"
+          },
+          {
+            "name": "time",
+            "type": "string",
+            "title": {
+              "en": "Kickoff time",
+              "nl": "Aftrap tijd"
+            },
+            "example": "20:00"
+          },
+          {
+            "name": "competition",
+            "type": "string",
+            "title": {
+              "en": "Competition",
+              "nl": "Competitie"
+            },
+            "example": "Premier League"
+          },
+          {
+            "name": "venue",
+            "type": "string",
+            "title": {
+              "en": "Venue",
+              "nl": "Locatie"
+            },
+            "example": "Home"
+          },
+          {
+            "name": "is_home",
+            "type": "boolean",
+            "title": {
+              "en": "Is home match",
+              "nl": "Is thuiswedstrijd"
+            }
+          },
+          {
+            "name": "days_until",
+            "type": "number",
+            "title": {
+              "en": "Days until match",
+              "nl": "Dagen tot wedstrijd"
+            },
+            "example": 3
+          }
+        ]
+      }
     ]
   },
   "drivers": [
@@ -1296,167 +1471,6 @@
                   "en": "Home match",
                   "nl": "Thuiswedstrijd"
                 }
-              }
-            ]
-          }
-        ],
-        "actions": [
-          {
-            "id": "get_current_score",
-            "title": {
-              "en": "Get current score",
-              "nl": "Haal huidige stand op"
-            },
-            "hint": {
-              "en": "Get the current score of an ongoing match. Returns empty values if no match is live.",
-              "nl": "Haal de huidige stand van een lopende wedstrijd op. Geeft lege waarden als er geen wedstrijd is."
-            },
-            "tokens": [
-              {
-                "name": "home_team",
-                "type": "string",
-                "title": {
-                  "en": "Home team",
-                  "nl": "Thuisteam"
-                },
-                "example": "PSV"
-              },
-              {
-                "name": "away_team",
-                "type": "string",
-                "title": {
-                  "en": "Away team",
-                  "nl": "Uitteam"
-                },
-                "example": "Ajax"
-              },
-              {
-                "name": "home_score",
-                "type": "number",
-                "title": {
-                  "en": "Home score",
-                  "nl": "Thuisscore"
-                },
-                "example": 2
-              },
-              {
-                "name": "away_score",
-                "type": "number",
-                "title": {
-                  "en": "Away score",
-                  "nl": "Uitscore"
-                },
-                "example": 1
-              },
-              {
-                "name": "score",
-                "type": "string",
-                "title": {
-                  "en": "Score",
-                  "nl": "Stand"
-                },
-                "example": "2-1"
-              },
-              {
-                "name": "minute",
-                "type": "number",
-                "title": {
-                  "en": "Current minute",
-                  "nl": "Huidige minuut"
-                },
-                "example": 65
-              },
-              {
-                "name": "status",
-                "type": "string",
-                "title": {
-                  "en": "Match status",
-                  "nl": "Wedstrijd status"
-                },
-                "example": "IN_PLAY"
-              },
-              {
-                "name": "is_live",
-                "type": "boolean",
-                "title": {
-                  "en": "Match is live",
-                  "nl": "Wedstrijd is live"
-                }
-              }
-            ]
-          },
-          {
-            "id": "get_next_match",
-            "title": {
-              "en": "Get next match",
-              "nl": "Haal volgende wedstrijd op"
-            },
-            "hint": {
-              "en": "Retrieve the next scheduled match. Returns match details as tokens.",
-              "nl": "Haalt de volgende geplande wedstrijd op. Geeft wedstrijdgegevens als tokens."
-            },
-            "tokens": [
-              {
-                "name": "opponent",
-                "type": "string",
-                "title": {
-                  "en": "Opponent",
-                  "nl": "Tegenstander"
-                },
-                "example": "Ajax"
-              },
-              {
-                "name": "date",
-                "type": "string",
-                "title": {
-                  "en": "Date",
-                  "nl": "Datum"
-                },
-                "example": "2025-12-21"
-              },
-              {
-                "name": "time",
-                "type": "string",
-                "title": {
-                  "en": "Kickoff time",
-                  "nl": "Aftrap tijd"
-                },
-                "example": "20:00"
-              },
-              {
-                "name": "competition",
-                "type": "string",
-                "title": {
-                  "en": "Competition",
-                  "nl": "Competitie"
-                },
-                "example": "Premier League"
-              },
-              {
-                "name": "venue",
-                "type": "string",
-                "title": {
-                  "en": "Venue",
-                  "nl": "Locatie"
-                },
-                "example": "Home"
-              },
-              {
-                "name": "is_home",
-                "type": "boolean",
-                "title": {
-                  "en": "Is home match",
-                  "nl": "Is thuiswedstrijd"
-                }
-              },
-              {
-                "name": "days_until",
-                "type": "number",
-                "title": {
-                  "en": "Days until match",
-                  "nl": "Dagen tot wedstrijd"
-                },
-                "example": 3
               }
             ]
           }
