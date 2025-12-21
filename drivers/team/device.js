@@ -375,9 +375,11 @@ class TeamDevice extends Homey.Device {
     const { opponent, isHome } = this.getOpponentInfo(match);
     this.log(`Calculated opponent: ${opponent}, isHome: ${isHome}`);
     const matchDate = new Date(match.utcDate);
+    const timezone = this.homey.clock.getTimezone();
     const kickoffTime = matchDate.toLocaleTimeString('nl-NL', {
       hour: '2-digit',
       minute: '2-digit',
+      timeZone: timezone,
     });
 
     // Update capabilities
@@ -502,14 +504,17 @@ class TeamDevice extends Homey.Device {
       if (nextMatch) {
         const { opponent, isHome } = this.getOpponentInfo(nextMatch);
         const matchDate = new Date(nextMatch.utcDate);
+        const timezone = this.homey.clock.getTimezone();
         const dateStr = matchDate.toLocaleDateString('nl-NL', {
           weekday: 'short',
           day: 'numeric',
           month: 'short',
+          timeZone: timezone,
         });
         const timeStr = matchDate.toLocaleTimeString('nl-NL', {
           hour: '2-digit',
           minute: '2-digit',
+          timeZone: timezone,
         });
         const venue = isHome ? '(T)' : '(U)';
         const nextMatchStr = `${opponent} ${venue} - ${dateStr} ${timeStr}`;

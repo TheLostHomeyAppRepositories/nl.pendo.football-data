@@ -22,5 +22,8 @@
   },
   "1.0.7": {
     "en": "Updated Flow card description"
+  },
+  "1.0.8": {
+    "en": "Fixed Flow cards"
   }
 }
